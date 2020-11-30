@@ -1,2 +1,293 @@
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+); // Respond above.
+@mixin respond-above($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+    // If the breakpoint doesnt exist in the map.
+  } @else {
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
 body {
+  font-family: 'Montserrat', sans-serif;
+  // Anything that breaks the code if too small goes here
+  @include respond-above(sm) {
+    .iphone {
+      z-index: 1;
+      position: relative;
+    }
+
+    .whitebar {
+      display: inline-flex;
+      margin-top: -45px;
+    }
+  }
+  // Anything that breaks the code if too small goes before here
+  .hero {
+    background-color: #0cb3f8;
+    color: white;
+  }
+
+  .navbar {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-link {
+    color: white;
+    font-weight: 600;
+  }
+
+  .nav-link:hover:after {
+    content: "";
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 3px solid white;
+  }
+
+  .nav-link:after {
+    content: "";
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 3px solid transparent;
+  }
+
+  .navbar-brand {
+    color: white;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 4rem;
+    margin-left: -1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-word {
+    margin-bottom: 4rem;
+    font-size: 1.2rem;
+  }
+
+  .iphone {
+    // z-index: 1;
+    // position: relative;
+  }
+
+  .whitebar {
+    background-color: white;
+  }
+
+  .bartext {
+    color: black;
+  }
+
+  .pricing {
+    background-color: darkgrey;
+  }
+
+  .apple_download {
+    border-style: solid;
+    border-radius: 20px;
+    margin-left: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+  }
+
+  .apple {
+    vertical-align: text-top;
+    padding-right: 0.5rem;
+  }
+  //apple changes
+  .apple_download .blackapple {
+    display: none;
+  }
+
+  .apple_download:hover .blackapple {
+    display: inline;
+  }
+
+  .apple_download:hover .whiteapple {
+    display: none;
+  }
+  //end of applechanges
+  .learn {
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    text-decoration: none;
+  }
+
+  .learn:hover:after {
+    content: "";
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 3px solid white;
+  }
+
+  .learn:after {
+    content: "";
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 3px solid transparent;
+  }
+
+  .downloadrow {
+    margin-bottom: 3rem;
+  }
+
+  .btn {
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .new {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .getnew {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .contents {
+    background-color: #f5f4f4;
+    color: #242526;
+    text-align: center;
+
+    h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-weight: 400;
+      color: #747474;
+      font-size: 0.9rem;
+    }
+
+    .subt {
+      font-size: 1.2rem;
+    }
+  }
+
+  .pricing {
+    background-color: #222222;
+    color: #ffffff;
+
+    h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+  }
+
+  .pricing {
+    h3 {
+      font-size: 0.7rem;
+    }
+
+    h2 {
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.7rem;
+    }
+
+    ul {
+      font-size: 0.9rem;
+    }
+
+    .trybutton {
+      border-width: 2px;
+      font-weight: 600;
+      font-size: 0.6rem;
+      padding: 0.6rem 1.7rem;
+    }
+
+    .motivating {
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+  }
+
+  .subscription {
+    // background-image: ;
+    background-image: url("../images/bg.png");
+    background-size: cover;
+    color: white;
+    background-repeat: no-repeat;
+
+    h2 {
+      font-weight: 800;
+      font-size: 2.7rem;
+    }
+
+    .btn {
+      border-radius: 4px !important;
+      font-size: 0.6rem;
+      font-weight: 600;
+    }
+
+    .form-control {
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+      border-width: 0;
+      margin-right: -4px;
+      font-size: 0.8rem;
+      padding-top: 1.2rem !important;
+      padding-bottom: 1.2rem !important;
+    }
+
+    .form-control::-webkit-input-placeholder {
+      color: white;
+      font-size: 0.8rem;
+    }
+  }
+
+  footer {
+    a {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 0.8rem;
+    }
+  }
 }
